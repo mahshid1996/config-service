@@ -43,6 +43,9 @@
     "ansi-regex": "5.0.1"
   },
   "dependencies": {
+    "@feathersjs/authentication": "^2.1.16",
+    "@feathersjs/authentication-jwt": "^2.0.10",
+    "@feathersjs/authentication-local": "^1.2.9",
     "@feathersjs/authentication-oauth": "^4.5.15",
     "@feathersjs/configuration": "^4.5.11",
     "@feathersjs/errors": "^4.5.11",
@@ -66,7 +69,7 @@
     "gridfile": "^1.1.1",
     "helmet": "^3.23.3",
     "is-fullwidth-code-point": "^4.0.0",
-    "jsonwebtoken": "^9.0.0",
+    "jsonwebtoken": "^9.0.1",
     "jwt-decode": "^3.1.2",
     "lodash.merge": "^4.6.2",
     "moment": "^2.24.0",

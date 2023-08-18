@@ -28,6 +28,17 @@
       "path": "/master-config",
       "isAuthEntity": false,
       "graphql": false
+    },
+    "login": {
+      "name": "login",
+      "nameSingular": "login",
+      "subFolder": "v1",
+      "fileName": "login",
+      "adapter": "mongoose",
+      "path": "/login",
+      "isAuthEntity": true,
+      "requiresAuth": true,
+      "graphql": false
     }
   },
   "hooks": {},
@@ -37,5 +48,11 @@
       "adapter": "mongoose",
       "connectionString": "mongodb://localhost:27017/config_service"
     }
+  },
+  "authentication": {
+    "strategies": [
+      "local"
+    ],
+    "entity": "login"
   }
 }

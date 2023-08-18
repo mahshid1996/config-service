@@ -1,4 +1,6 @@
+
 // Configure the Feathers services. (Can be re-generated.)
+let login = require('./v1/login/login.service');
 let masterConfig = require('./v1/master-config/master-config.service');
 
 // !code: imports // !end
@@ -6,11 +8,13 @@ let masterConfig = require('./v1/master-config/master-config.service');
 
 // eslint-disable-next-line no-unused-vars
 let moduleExports = function (app) {
-    app.configure(masterConfig);
-    // !code: func_return // !end
+  app.configure(login);
+  app.configure(masterConfig);
+  // !code: func_return // !end
 };
 
 // !code: exports // !end
 module.exports = moduleExports;
+
 // !code: funcs // !end
 // !code: end // !end

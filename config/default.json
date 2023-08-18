@@ -1,22 +1,48 @@
 {
-    "host": "localhost",
-    "port": 3030,
-    "public": "../public/",
-    "paginate": {
-        "default": 10,
-        "max": 100
-    },
-    "tests": {
-        "environmentsAllowingSeedData": [""]
-    },
-    "mongodb": "mongodb://localhost:27017/drmDB",
-    "gRPC": {
-        "host": "0.0.0.0",
-        "port": "30308",
-        "secure": false
-    },
-    "loggerLevel": "debug",
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 100
+  },
+  "tests": {
+    "environmentsAllowingSeedData": [
+      ""
+    ]
+  },
+  "mongodb": "mongodb://localhost:27017/drmDB",
+  "gRPC": {
+    "host": "0.0.0.0",
+    "port": "30308",
+    "secure": false
+  },
+  "loggerLevel": "debug",
+  "jwt": {
+    "secret": "sjtkca03keepfiring46br¤£@62,"
+  },
+  "authentication": {
+    "secret": "6495cde3b70cb6c0ef0cc5bc88ad68208b8a816fc4859eb77cddac6d40a67c3ee86a05f089ee925191db61ebb931cabb5ec8591ac352d96ec5c22ea6eb86cd5d338e00a226f6a301d4cbee2387d4912dec1c27d2ef4ce95fe78c4a7bc9ac372aeef61ec31e563761070177b76e85f515dcf3d4dd1de893683d8927a815277d7b1a9b1c63c42544f4130e947c4ef51e0aaff3ca39512de5421508b58e411aff36a2e04b2fb125abb5578e1b7c58bd0b1033041b33e5610398b91c338da5b4ac1ec223ccb8051a2583ce6dd4b04643ce60a4fb3ee5b022941d95a4006cdbabb2aa77e99e7bf091ff504690431818184e74b6513f79f882552759d0972165f9a3a4",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/login",
+    "service": "login",
     "jwt": {
-        "secret": "sjtkca03keepfiring46br¤£@62,"
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
     }
+  }
 }

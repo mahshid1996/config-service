@@ -10,18 +10,30 @@ let moduleExports = app => {
   // Add your custom middleware here. Remember that
   // in Express, the order matters.
   // !code: middleware 
-  
+  const { checkPermission } = require('../../src/checkPermission.js'); // Import your checkPermission function
+
 
   const isProduction = process.env.NODE_ENV === 'production';
 
     //we need to get url & user for checkPermission
-    app.use((req, res, next) => {
+    app.use(async(req, res, next) => {
         // X-Host for Production, Host for development
         const url = parse(
             req.get('X-Host') ? req.get('X-Host') : `${req.protocol}://${req.get('host')}`
         );
         req.feathers.url = url;
         req.feathers.user = req.user;
+     
+     console.log(req.headers.authorization)
+
+      if(req.path !== '/login'){
+           // Assuming checkPermission returns true if user has permission, otherwise false
+           const hasPermission = await checkPermission(req.headers.authorization); // Modify this according to your checkPermission function
+
+           if (!hasPermission) {
+             return res.status(403).json({ message: 'Permission denied' });
+           }
+  }
         next();
     });
 
