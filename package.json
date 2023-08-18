@@ -65,7 +65,6 @@
     "cross-env": "^7.0.3",
     "feathers-hooks-common": "^6.1.0",
     "feathers-mongoose": "^6.3.0",
-    "feathers-swagger": "^2.0.0",
     "gridfile": "^1.1.1",
     "helmet": "^3.23.3",
     "is-fullwidth-code-point": "^4.0.0",

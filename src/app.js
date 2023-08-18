@@ -27,7 +27,6 @@ const authentication = require('./authentication');
 
 const mongoose = require('./mongoose');
 // !code: imports
-const swagger = require('feathers-swagger'); // !end
 // !code: init // !end
 
 const app = express(feathers());
@@ -81,33 +80,6 @@ app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 app.use('/', express.static(app.get('public')));
 // !end
 // !code: use_end
-app.configure(
-    swagger({
-        docsPath: '/docs',
-        uiIndex: true,
-        specs: {
-            basePath: '/drm/config-service',
-            schemes: ['http', 'https'],
-            info: {
-                title: 'Config Service',
-                description: 'Config Service API',
-                version: '1.0.0'
-            },
-            securityDefinitions: {
-                Bearer: {
-                    type: 'apiKey',
-                    name: 'Authorization',
-                    in: 'header'
-                }
-            },
-            security: [
-                {
-                    Bearer: []
-                }
-            ]
-        }
-    })
-);
 // !end
 
 // Set up Plugins and providers
