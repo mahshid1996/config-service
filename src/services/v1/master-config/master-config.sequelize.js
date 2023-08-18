@@ -25,9 +25,6 @@ let moduleExports = merge({},
     description: {
       type: DataTypes.TEXT
     },
-    status: {
-      type: Sequelize.ENUM(["Active","InActive"])
-    },
     code: {
       type: DataTypes.TEXT
     },

@@ -23,13 +23,6 @@ let moduleExports = merge({},
       description: {
         bsonType: "string"
       },
-      status: {
-        enum: [
-          "Active",
-          "InActive"
-        ],
-        bsonType: "string"
-      },
       code: {
         bsonType: "string"
       },

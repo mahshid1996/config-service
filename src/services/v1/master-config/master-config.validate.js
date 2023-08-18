@@ -32,13 +32,6 @@ let base = merge({},
       description: {
         type: "string"
       },
-      status: {
-        type: "string",
-        enum: [
-          "Active",
-          "InActive"
-        ]
-      },
       code: {
         type: "string"
       },

@@ -35,10 +35,6 @@ let schema = {
     description: {
       type: 'string'
     },
-    status: {
-      type: 'string',
-      enum: ['Active', 'InActive']
-    },
     code: {
       type: 'string'
     },

@@ -13,13 +13,6 @@ let moduleExports = merge({},
     href: String,
     name: String,
     description: String,
-    status: {
-      type: String,
-      enum: [
-        "Active",
-        "InActive"
-      ]
-    },
     code: String,
     "@type": String,
     "@baseType": {
