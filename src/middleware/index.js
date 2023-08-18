@@ -28,7 +28,7 @@ let moduleExports = app => {
 
       if(req.path !== '/login'){
            // Assuming checkPermission returns true if user has permission, otherwise false
-           const hasPermission = await checkPermission(req.headers.authorization); // Modify this according to your checkPermission function
+           const [hasPermission] = await checkPermission(req.headers.authorization); // Modify this according to your checkPermission function
 
            if (!hasPermission) {
              return res.status(403).json({ message: 'Permission denied' });

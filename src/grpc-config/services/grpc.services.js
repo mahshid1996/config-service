@@ -426,6 +426,67 @@ function startmMasterConfigService(app) {
         );
       }
     },
+    // Read all resource types and base types command
+    ReadAllResourceTypes: function (call, callback) {
+      // Get current time
+      var t0 = new Date();
+      var resultMessages = [];
+      var count;
+      var valid = grpc.validateJWT(call);
+      logger.applog('debug', t0, 'validation is...' + valid);
+      if (valid) {
+        logger.applog('debug', t0, 'Caller is authorized');
+        const appLimit = getPaginationMax(app);
+
+        if (call.request.limit > appLimit) {
+          call.request.paginate = false;
+          app
+            .service('v1/master-config')
+            .find(getQueries(call.request))
+            .then((messages) => {
+              count = messages.length;
+              callback(null, {
+                totalCount: count,
+                appLimit: appLimit
+              });
+            })
+            .catch((error) => {
+              logger.applog('error', t0, JSON.stringify(error));
+              callback(error, '');
+            });
+        } else {
+          app
+            .service('v1/master-config')
+            .find(getQueries(call.request))
+            .then((messages) => {
+              count = messages.length;
+              messages.forEach(function (message) {
+                resultMessages.push(
+                  utility.replaceKeyWithoutSpecailSymbels(message)
+                );
+              });
+              callback(null, {
+                masterConfig: resultMessages,
+                totalCount: count,
+                appLimit: appLimit
+              });
+            })
+            .catch((error) => {
+              logger.applog('error', t0, JSON.stringify(error));
+              callback(error, '');
+            });
+        }
+      } else {
+        logger.applog('debug', t0, 'unauthorized');
+        callback(
+          grpc.sendError(
+            gg.status.UNAUTHENTICATED,
+            'User is UNAUTHENTICATED..'
+          ),
+          null
+        );
+      }
+    },
   });
 }
 

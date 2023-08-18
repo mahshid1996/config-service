@@ -27,6 +27,9 @@ let schema = {
     },
     user: {
       type: 'string'
+    },
+    permission: {
+      type: 'string'
     }
     // !code: schema_properties // !end
   },

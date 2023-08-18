@@ -19,6 +19,9 @@ let moduleExports = merge({},
     },
     user: {
       type: DataTypes.TEXT
+    },
+    permission:{
+      type: DataTypes.TEXT
     }
   },
   // !end

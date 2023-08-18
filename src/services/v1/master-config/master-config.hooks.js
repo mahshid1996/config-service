@@ -3,8 +3,7 @@
 const commonHooks = require('feathers-hooks-common');
 const queries = require('../../../hooks/queries');
 const {shapePayload} = require('../../../hooks/shapePayload');
-const setServices = require('../../../hooks/setServices');//for assigning service
-const checkPermission = require("../../../hooks/checkPermission");
+const {checkMethodPermission} = require('../../../hooks/checkMethodPermission.js');
 // !code: imports
 const {
   schema: {
@@ -33,12 +32,12 @@ let moduleExports = {
   before: {
     // !<DEFAULT> code: before
     all: [],
-    find: [checkPermission(),setServices(),queries(schema)],
-    get: [checkPermission(),setServices(),queries(schema)],
-    create: [checkPermission()],
-    update: [checkPermission()],
-    patch: [checkPermission()],
-    remove: [checkPermission()]
+    find: [checkMethodPermission,queries(schema)],
+    get: [checkMethodPermission,queries(schema)],
+    create: [checkMethodPermission],
+    update: [checkMethodPermission],
+    patch: [checkMethodPermission],
+    remove: [checkMethodPermission]
     // !end
   },
 

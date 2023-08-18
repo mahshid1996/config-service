@@ -27,7 +27,7 @@
       "jwt",
       "local"
     ],
-    "path": "/login",
+    "path": "/authentication",
     "service": "login",
     "jwt": {
       "header": {

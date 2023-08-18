@@ -25,6 +25,9 @@ let base = merge({},
       },
       user: {
         type: "string"
+      },
+      permission:{
+        type: "string"
       }
     }
   },

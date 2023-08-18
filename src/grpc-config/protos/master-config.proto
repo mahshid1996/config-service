@@ -19,13 +19,6 @@ message MasterConfigMessage{
     // description of the MasterConfigMessage task
     string description = 4;
 
-    // status of the MasterConfigMessage task
-    enum Status {
-        Active = 1;
-        InActive = 2;
-    }
-    string status= 5;
-
     // @type of the MasterConfigMessage task
     string type = 6[json_name = "@type"];
 
@@ -107,13 +100,6 @@ message TypesMasterConfigMessage{
 
     // description of the MasterConfigMessage task
     string description = 4;
-
-    // status of the MasterConfigMessage task
-    enum Status {
-        Active = 1;
-        InActive = 2;
-    }
-    string status= 5;
 
     // @type of the MasterConfigMessage task
     string type = 6[json_name = "@type"];
@@ -198,7 +184,12 @@ message ReadAllMasterConfigResponse{
     int64 totalCount =2;
     int64 appLimit = 3;
  }
-
+// Response data to ReadAll types Service task
+message ReadAllTypeMasterConfigResponse{
+    repeated TypesMasterConfigMessage masterConfig = 1;
+    int64 totalCount =2;
+    int64 appLimit = 3;
+ }
 //########## Create ##########//
 // Request data to create new Service task
 message CreateMasterConfigMessageRequest{
@@ -263,4 +254,5 @@ service MasterConfig{
     rpc Patch(PatchMasterConfigRequest)returns(PatchMasterConfigResponse){}
     rpc Delete(MasterConfigId)returns(DeleteMasterConfigeResponse){}
     rpc ReadById (MasterConfigId) returns (ReadMasterConfigResponse){}
+    rpc ReadAllResourceTypes(ReadAllMasterConfigRequest)returns(ReadAllTypeMasterConfigResponse){}
 }

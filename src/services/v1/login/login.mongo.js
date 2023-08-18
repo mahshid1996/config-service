@@ -19,6 +19,9 @@ let moduleExports = merge({},
       },
       user:{
         bsonType: "string"
+      },
+      permission:{
+        bsonType: "string"
       }
     }
   },

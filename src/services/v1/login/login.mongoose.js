@@ -11,7 +11,8 @@ let moduleExports = merge({},
   // !<DEFAULT> code: model
   {
     accessToken:String,
-    user:String
+    user:String,
+    permission:String
   },
   // !end
   // !code: moduleExports // !end
