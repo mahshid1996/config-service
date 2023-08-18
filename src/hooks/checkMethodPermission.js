@@ -6,10 +6,12 @@ const { checkPermission } = require('../../src/checkPermission.js');
 
 // Function to check permission for the API method
 async function checkMethodPermission(context) {
-    // Skip permission check for the "login" path
-    if (context.path === "login") {
+
+    // Skip permission check for the "login" path or when the context has a "provider" property
+    if (context.path === "login" || context?.params?.provider === 'grpc') {
         return context;
     }
+
 
     // Get current date time
     const time = new Date();
@@ -44,7 +46,7 @@ async function checkMethodPermission(context) {
         const newIsOK = formattedPermissions.includes(newPermissionPath);
 
         logger.applog("info", time, `Permission path: ${newPermissionPath}`);
-        
+
         // Check permissions for the method
         if (!newIsOK) {
             throw new BadRequest(
